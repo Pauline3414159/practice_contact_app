@@ -1,0 +1,41 @@
+# goal - solidfy everything we learned in the back end :)
+
+homepage - if contancts is empty, direct user to create a contact
+otherwise display this list of contants - offer a chance to delete a person
+display screen - have options to display only certial types of contact 
+    or to search for a contacts - you can select a contanct from there
+display contantct - display the person's attributes, and offer a chance to edit attributes
+
+CREATE
+
+class Person
+
+TYPE = work, friends, family, custom??
+
+def initialize()
+  @first
+  @last
+  @birthday
+  @phone
+  @email
+  @physical_address
+  @categery
+end
+
+end
+
+store in array? atore in hash?
+
+READ
+  list as a whole
+  aphabeltical list (default)
+  search/display by TYPE
+  search for person by @first, @last, @birthday, 
+  
+  
+  when you select a contact, displays only their attributes (can choose to update)
+
+UPDATE
+  when you are in the contacts page, choice to update
+DELETE
+
