@@ -1,4 +1,5 @@
 # goal - solidfy everything we learned in the back end :)
+## TEST PLANNING!!
 
 homepage - if contancts is empty, direct user to create a contact
 otherwise display this list of contants - offer a chance to delete a person
