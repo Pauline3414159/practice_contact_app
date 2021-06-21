@@ -1,11 +1,82 @@
-# goal - solidfy everything we learned in the back end :)
-## TEST PLANNING!!
+# goal 
 
-homepage - if contancts is empty, direct user to create a contact
-otherwise display this list of contants - offer a chance to delete a person
-display screen - have options to display only certial types of contact 
+  - solidfy everything we learned in the back end :)
+  - - Basic database-driven Contact Manager Application for individuals
+  - incorporate many of the tools and (code types??) presented in lessons
+    - Write Rake tasks
+    - Use Ajax/JQuery, Javascript, 
+
+# Define Requirements
+
+# Iteration #1
+
+  - Create application in the simplest way possible. 
+  - Include basic database operations: Create, Read, Update, Delete 
+    - create a database to store our contacts
+      - SQL?? Session until we develop know-how of SQL?
+    - list all the contacts in the database (I could draw a picture but this is what the homepage would look like)
+      - Home                                    sign-up / log-in
+        -edit-delete/ id / first name/ last name/ phone/ email
+      - create new
+    - create new contact
+    - edit an existing contact in the database
+    - delete an existing contact in the database
+  - methods
+    - create_contact
+    - delete_contact
+    - edit_contact
+    - get_contact
+    - list_contacts
+
+# Iteration #2
+
+  - Improve appearance of application
+
+# Iteration #3
+
+  - Add form validation.
+  - Prevent user from submitting a form without completing required form fields.
+  - validate email/phone number/address for Create New Contact
+  - Error Messages
+    - first name is required
+    - last name is required
+    - invalid phone number
+    - invalid email address
+  - name logic: length greater than zero
+  - phone logic: length greater than 0, if value exists, then match a reqular expression
+  - email logic: length greater than 0, if value exists...
+
+# Iteration #4
+
+ - create unit tests Using a Mock Object Framework (Rack::Test)
+ - Create Rake  function to run tests
+
+# Iteration #5
+
+  - Practice Test-Driven Development (write test first, write code against it)
+    - write unit test that fails
+    - write sloppy-created fast code that passes the unit test
+    - refactor code
+  - User functions
+    - view the list of contact groups
+    - create a new contact group
+    - delete a contact group
+    - display ....
+    - another user function...
+    - ect.
+
+# Iterationo #6
+
+  - Ajax functionality
+
+- Homepage
+ - if contancts is empty, direct user to create a contact
+ - otherwise display this bullet list of contacts
+  - first-last name/ address/ phone/ email/ birthday/ category
+ - offer a chance to delete a person
+   display screen - have options to display only certial types of contact 
     or to search for a contacts - you can select a contanct from there
-display contantct - display the person's attributes, and offer a chance to edit attributes
+   display contantct - display the person's attributes, and offer a chance to edit attributes
 
 CREATE
 
@@ -32,11 +103,10 @@ READ
   aphabeltical list (default)
   search/display by TYPE
   search for person by @first, @last, @birthday, 
-  
-  
+
+
   when you select a contact, displays only their attributes (can choose to update)
 
 UPDATE
   when you are in the contacts page, choice to update
 DELETE
-
