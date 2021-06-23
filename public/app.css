@@ -1,5 +1,6 @@
 table { 
-  width: 100%; 
+  margin: 0 auto;
+  width: 1000px;
   border-collapse: collapse; 
 }
 /* Zebra striping */
@@ -20,3 +21,115 @@ td, th {
 tr:hover {
   background-color: lightgray;
   }
+
+  h1 {
+    margin: 76px 0 0 0px;
+    padding: 50px;
+    text-align: center;
+  }
+
+/* Eliminate margins and padding on everything */
+.styled-form * {
+  margin: 0;
+  padding: 0;
+}
+
+/* Grey box and default font for fieldsets */
+.styled-form fieldset {
+  margin: 0 auto;
+  max-width: 750px;
+  background-color: #ececec;
+  border: 2px solid #999;
+  box-sizing: border-box;
+  color: #4d4d4d;
+  font-family:
+    myriad-pro, "Helvetica Neue", Helvetica, Roboto,
+    Arial, sans-serif;
+  padding: 1rem;
+}
+
+/* Custom appearance for labels */
+.styled-form label {
+  font-weight: bold;
+  line-height: 1.5rem;
+}
+
+/* Custom appearance for input and select fields */
+.styled-form input[type="text"],
+.styled-form input[type="tel"],
+.styled-form input[type="email"],
+.styled-form select {
+  border: 1px solid #06c;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font: normal 1rem Helvetica, Arial, sans-serif;
+  height: 40px;
+  padding: 5px 8px;
+}
+
+.top-to-bottom label,
+.top-to-bottom input[type="text"],
+.styled-form input[type="tel"],
+.styled-form input[type="email"] {
+  display: block;
+  width: 100%;
+}
+
+.styled-form label {
+  padding-top: 0.75rem;
+}
+
+.top-to-bottom dl.partial {
+  box-sizing: border-box;
+  display: inline-block;
+  padding-right: 1rem;
+  vertical-align: top;
+}
+
+.top-to-bottom dl.address {
+  width: 100%;
+}
+
+.top-to-bottom dl.city {
+  width: 50%;
+}
+
+.top-to-bottom dl.state {
+  width: 25%;
+}
+
+.top-to-bottom dl.zipcode {
+  padding-right: 0;
+  width: 25%;
+}
+
+.top-to-bottom dl.phone {
+  width: 50%;
+}
+
+.top-to-bottom dl.email {
+  padding-right: 0;
+  width: 50%;
+}
+
+.top-to-bottom dl dd {
+  width: auto;
+}
+
+.top-to-bottom fieldset,
+.top-to-bottom dl,
+.top-to-bottom dl dd,
+.top-to-bottom dl dt {
+  font-size: 0;
+}
+
+.top-to-bottom dl label,
+.top-to-bottom dl input[type="text"] {
+  font-size: 1rem;
+}
+
+.top-to-bottom select {
+  width: 100%;
+}
+
+ 

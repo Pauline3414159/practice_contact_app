@@ -1,34 +1,32 @@
-<!DOCTYPE html>
-<html lang="en-US">
 
-  <head>
-    <title>Contact Management System</title>
-    <meta charset="utf-8" />
-    <link href="/app.css" rel="stylesheet" type="text/css" />
-  </head>
-
-  <body>
-    <table id="keywords">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Address</th>
-          <th>Phone Number</th>
-          <th>Email Address</th>
-        </tr>
-      <thead>
-      <tbody>
-        <% @contacts.each do |contact| %>
-        <tr>
-          <td><%= contact[:last_name] %></td>
-          <td><%= contact[:first_name] %></td>
-          <td><%= contact[:address] %></td>
-          <td><%= contact[:phone] %></td>
-          <td><%= contact[:email] %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </body>
-</html>
+<table id="keywords">
+  <thead>
+    <tr>
+      <th></th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th>Email Address</th>
+    </tr>
+  <thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+    <tr>
+      <td>
+        <a href="/home/edit/<%= contact.id %>">edit</a>
+        <% " | " %>
+        <a href="/home/delete/<%= contact.id %>">delete</a>
+      </td>
+      <td><%= contact.last %></td>
+      <td><%= contact.first %></td>
+      <td><%= contact.address.all %></td>
+      <td><%= contact.phone %></td>
+      <td><%= contact.email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+  <p>
+    <a href="/home/create_contact">Create New Contact</a>
+</p>
