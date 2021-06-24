@@ -14,8 +14,8 @@
     <% @contacts.each do |contact| %>
     <tr>
       <td>
-        <a href="/home/edit/<%= contact.id %>">edit</a>
-        <% " | " %>
+        <a href="/contact/<%= contact.id %>/edit">edit</a>
+        <%= " | " %>
         <a href="/home/delete/<%= contact.id %>">delete</a>
       </td>
       <td><%= contact.last %></td>
