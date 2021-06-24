@@ -16,7 +16,9 @@
       <td>
         <a href="/contact/<%= contact.id %>/edit">edit</a>
         <%= " | " %>
-        <a href="/home/delete/<%= contact.id %>">delete</a>
+        <form class="inline" action="contact/<%= contact.id %>/delete" method="post">
+          <button type="submit">Delete</button>
+        </form>
       </td>
       <td><%= contact.last %></td>
       <td><%= contact.first %></td>

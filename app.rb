@@ -24,6 +24,15 @@ helpers do
     address.zipcode = zipcode
     address
   end
+  
+  def load_contacts(id)
+    #binding.pry
+    contact = session[:contacts].find { |contact| contact.id == id }
+    #binding.pry
+    session[:error] = "The specified contact was not found."
+    return contact if id
+    redirect "/home"
+  end
 
   def update_contact(contact, params)
     contact.first = params[:first]
@@ -62,22 +71,12 @@ post "/create_contact" do
   redirect "/home"
 end
 
-def load_contacts(id)
-  #binding.pry
-  contact = session[:contacts].find { |contact| contact.id == id }
-  #binding.pry
-  session[:error] = "The specified contact was not found."
-  return contact if id
-  redirect "/home"
-end
-
 # Render edit view 
 get "/contact/:id/edit" do 
   @id = params[:id].to_i
   @contact = load_contacts(@id)
   erb(:edit_contact, layout: :layout)
 end
-
 
 # edit an existing contact
 post "/contact/:id/edit" do 
@@ -87,8 +86,15 @@ post "/contact/:id/edit" do
   binding.pry
   redirect "/home"
 end
-post "/contact/delete/:id" do 
-  
+
+# remove contact from list
+post "/contact/:id/delete" do 
+  id = params[:id].to_i
+  #binding.pry
+  session[:contacts].reject! { |contact| contact.id == id }
+  #binding.pry
+
+  redirect "/home"
 end
 
 
