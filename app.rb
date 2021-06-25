@@ -83,7 +83,7 @@ post "/contact/:id/edit" do
   @id = params[:id].to_i
   contact = load_contacts(@id)
   @contact = update_contact(contact, params)
-  binding.pry
+  # binding.pry
   redirect "/home"
 end
 

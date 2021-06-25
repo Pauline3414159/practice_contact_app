@@ -91,13 +91,17 @@
       <dl class="zipcode partial">
         <dt><label for="zipcode">Zipcode</label></dt>
         <dd>
-          <input type="text" name="zipcode" id="zipcode" pattern="[0-9]{5}" value="<%= @contact.address.zipcode || params[:zipcode] %>" />
+          <input type="text" name="zipcode" minlength="5" maxlength="5" 
+          id="zipcode" pattern="[0-9]{5}" value="<%= @contact.address.zipcode || params[:zipcode] %>" />
         </dd>
       </dl>
 
       <dl class="phone partial">
         <dt><label for="phone">Phone Number</label></dt>
-        <dd><input type="tel" id="phone" name="phone" value="<%= @contact.phone || params[:phone]  %>"/></dd>
+        <dd>
+          <input type="tel" id="phone" pattern="[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{4}"
+          minlength="10"  maxlength="12" name="phone" value="<%= @contact.phone || params[:phone]  %>"/>
+        </dd>
       </dl>
 
       <dl class="email partial">

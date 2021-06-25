@@ -23,7 +23,7 @@
       <td><%= contact.last %></td>
       <td><%= contact.first %></td>
       <td><%= contact.address.all %></td>
-      <td><%= contact.phone %></td>
+      <td><%= contact.phone.dup.insert(3,'-').insert(-5, '-') %></td>
       <td><%= contact.email %></td>
     </tr>
     <% end %>

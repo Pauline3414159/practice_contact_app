@@ -46,6 +46,8 @@
   - phone logic: length greater than 0, if value exists, then match a reqular expression
   - email logic: length greater than 0, if value exists...
 
+  -validating phone, email, addresses
+
 # Iteration #4
 
  - create unit tests Using a Mock Object Framework (Rack::Test)
