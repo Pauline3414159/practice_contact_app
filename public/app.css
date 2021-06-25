@@ -1,32 +1,37 @@
-table { 
+@import url("whitespace-reset.css");
+
+table {
   margin: 0 auto;
   width: 1000px;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
+
 /* Zebra striping */
-tr:nth-of-type(odd) { 
-  background: #eee; 
+tr:nth-of-type(odd) {
+  background: #eee;
 }
-th { 
-  background: #333; 
-  color: white; 
-  font-weight: bold; 
+
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
 }
-td, th { 
-  padding: 6px; 
-  border: 1px solid #ccc; 
-  text-align: left; 
+td,
+th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
 }
 
 tr:hover {
   background-color: lightgray;
-  }
+}
 
-  h1 {
-    margin: 76px 0 0 0px;
-    padding: 50px;
-    text-align: center;
-  }
+h1 {
+  margin: 76px 0 0 0px;
+  padding: 50px;
+  text-align: center;
+}
 
 /* Eliminate margins and padding on everything */
 .styled-form * {
@@ -42,9 +47,8 @@ tr:hover {
   border: 2px solid #999;
   box-sizing: border-box;
   color: #4d4d4d;
-  font-family:
-    myriad-pro, "Helvetica Neue", Helvetica, Roboto,
-    Arial, sans-serif;
+  font-family: myriad-pro, "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif;
   padding: 1rem;
 }
 
@@ -132,4 +136,6 @@ tr:hover {
   width: 100%;
 }
 
- 
+form.inline {
+  display: inline;
+}

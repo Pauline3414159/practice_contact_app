@@ -14,9 +14,11 @@
     <% @contacts.each do |contact| %>
     <tr>
       <td>
-        <a href="/home/edit/<%= contact.id %>">edit</a>
-        <% " | " %>
-        <a href="/home/delete/<%= contact.id %>">delete</a>
+        <a href="/contact/<%= contact.id %>/edit">edit</a>
+        <%= " | " %>
+        <form class="inline" action="contact/<%= contact.id %>/delete" method="post">
+          <button type="submit">Delete</button>
+        </form>
       </td>
       <td><%= contact.last %></td>
       <td><%= contact.first %></td>

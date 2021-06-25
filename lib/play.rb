@@ -21,4 +21,5 @@ end
 address = add_address("123 Main St", "", "Somewhere", "AL", "123456")
 contact = Contact.new(first: "jane", last: "doe", address: address)
 
-p contact.address.all
+contact.first = "Jim"
+p contact.first
