@@ -18,7 +18,7 @@
       <dl class="address">
         <dt><label for="street_1">Address</label></dt>
         <dd>
-          <input type="text" name="street_1" id="address" value="<%= @contact.address.street_1 || params[:street_1] %>"/>
+          <input type="text" name="street_1" id="address" pattern="^[0-9]+\s[A-Za-z]+\s[A-Za-z]+\.?" value="<%= @contact.address.street_1 || params[:street_1] %>"/>
           <input type="text" name="street_2" id="address" value="<%= @contact.address.street_2 || params[:street_2] %>"/>
         </dd>
       </dl>

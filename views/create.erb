@@ -19,7 +19,8 @@
       <dl class="address">
         <dt><label for="street_1">Address</label></dt>
         <dd>
-          <input type="text" name="street_1" id="address" value=""/>
+          <input type="text" name="street_1" id="address" placeholder="# Example Street"
+          value="" pattern="^[0-9]+\s[A-Za-z]+\s[A-Za-z]+\.?"/>
           <input type="text" name="street_2" id="address" value=""/>
         </dd>
       </dl>
@@ -92,7 +93,7 @@
       <dl class="zipcode partial">
         <dt><label for="zipcode">Zipcode</label></dt>
         <dd>
-          <input type="text" name="zipcode" id="zipcode" minlength="5" maxlength="5" placeholder="01245"
+          <input type="text" name="zipcode" id="zipcode" minlength="5" maxlength="5" placeholder="#####"
           pattern="[0-9]{5}" value="" />
         </dd>
       </dl>
@@ -100,7 +101,7 @@
       <dl class="phone partial">
         <dt><label for="phone">Phone Number</label></dt>
         <dd>
-          <input type="tel" pattern="[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{4}" placeholder="XXX-XXX-XXXX"
+          <input type="tel" pattern="[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{4}" placeholder="###-###-####"
           minlength="10"  maxlength="12" id="phone" name="phone" value=""/>
         </dd>
       </dl>

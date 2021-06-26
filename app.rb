@@ -17,7 +17,7 @@ end
 helpers do 
   def add_address(street_1, street_2, city, state, zipcode)
     address = Address.new
-    address.street_1 = street_1
+    address.street_1 = street_1.split.map(&:capitalize).join(" ")
     address.street_2 = street_2
     address.city = city
     address.state = state
