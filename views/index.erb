@@ -1,34 +1,37 @@
 
+
+  <p>
+    <a href="/home/create_contact">Create New Contact</a>
+  </p>
 <table id="keywords">
   <thead>
     <tr>
       <th></th>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th><a href="/home/<%= sortable("last") %>" class="column">Last Name</a></th>
+      <th><a href="/home/<%= sortable("first") %>" class="column">First Name</a></th>
       <th>Address</th>
       <th>Phone Number</th>
       <th>Email Address</th>
+      <th>Birthday</th>
     </tr>
   <thead>
   <tbody>
     <% @contacts.each do |contact| %>
     <tr>
       <td>
-        <a href="/contact/<%= contact.id %>/edit">edit</a>
+        <a href="/contact/<%= contact["id"] %>/edit">edit</a>
         <%= " | " %>
-        <form class="inline" action="contact/<%= contact.id %>/delete" method="post">
+        <form class="inline" action="contact/<%= contact["id"] %>/delete" method="post">
           <button type="submit">Delete</button>
         </form>
       </td>
-      <td><%= contact.last %></td>
-      <td><%= contact.first %></td>
-      <td><%= contact.address.all %></td>
-      <td><%= contact.phone %></td>
-      <td><%= contact.email %></td>
+      <td><%= contact["last"] %></td>
+      <td><%= contact["first"] %></td>
+      <td><%= complete_address(contact["address"]) %></td> 
+      <td><%= contact["phone"] %></td>
+      <td><%= contact["email"] %></td>
+      <td><%= contact["birthday"] %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-  <p>
-    <a href="/home/create_contact">Create New Contact</a>
-</p>

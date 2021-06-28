@@ -11,6 +11,7 @@ tr:nth-of-type(odd) {
   background: #eee;
 }
 
+
 th {
   background: #333;
   color: white;
@@ -23,6 +24,7 @@ th {
   text-align: left;
 }
 
+
 tr:hover {
   background-color: lightgray;
 }
@@ -31,6 +33,11 @@ h1 {
   margin: 76px 0 0 0px;
   padding: 50px;
   text-align: center;
+}
+
+a.column {
+color: white;
+text-decoration: none;
 }
 
 /* Eliminate margins and padding on everything */
@@ -48,7 +55,7 @@ h1 {
   box-sizing: border-box;
   color: #4d4d4d;
   font-family: myriad-pro, "Helvetica Neue", Helvetica, Roboto, Arial,
-    sans-serif;
+  sans-serif;
   padding: 1rem;
 }
 
@@ -94,7 +101,8 @@ h1 {
   width: 100%;
 }
 
-.top-to-bottom dl.city {
+.top-to-bottom dl.city, 
+.top-to-bottom dl.birthday {
   width: 50%;
 }
 
