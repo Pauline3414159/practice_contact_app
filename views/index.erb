@@ -20,18 +20,11 @@
           <button type="submit">Delete</button>
         </form>
       </td>
-      <td><%= contact.last %></td>
-      <td><%= contact.first %></td>
-      <td><%= contact.address.all %></td>
-      
-      <% if contact.phone.empty? %>
-        <td></td>
-      <% else %>
-        <td><%= contact.phone.dup.insert(3,'-').insert(-5, '-') %></td>
-        
-      <% end %>
-      
-      <td><%= contact.email %></td>
+      <td><%= contact.to_h.fetch('first') {""} %></td>
+      <td><%= contact.to_h.fetch('last') {""} %></td>
+      <td><%= contact.to_h.fetch('address').all {""} %></td>
+      <td><%= contact.to_h.fetch('phone') {""} %></td>
+      <td><%= contact.to_h.fetch('email') {""}%></td>
     </tr>
     <% end %>
   </tbody>
