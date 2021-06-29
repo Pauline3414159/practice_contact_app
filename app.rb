@@ -66,7 +66,9 @@ end
 # Create new contact
 post "/create_contact" do 
   address = add_address(params[:street_1], params[:street_2], params[:city], params[:state], params[:zipcode])
-  session[:contacts] << Contact.new(first: params[:first], last: params[:last], phone: params[:phone], email: params[:email], address: address)
+  options = { phone: params[:phone], email: params[:email]}
+  options.delete_if { |_, v| v.empty? }
+  session[:contacts] << Contact.new(first: params[:first], last: params[:last], address: address, **options)
   @contacts = session[:contacts] 
   redirect "/home"
 end

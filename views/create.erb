@@ -9,11 +9,11 @@
     <fieldset>
       <dl>
         <dt><label for="first">First Name</label></dt>
-        <dd><input type="text" name="first" id="name" value="" /></dd>
+        <dd><input type="text" name="first" id="name" value="" required pattern="[A-Za-z]+"/></dd>
       </dl>
       <dl>
         <dt><label for="last">Last Name</label></dt>
-        <dd><input type="text" name="last" id="name" value="" /></dd>
+        <dd><input type="text" name="last" id="name" value="" required pattern="[A-Za-z]+"/></dd>
       </dl>
       
       <dl class="address">
@@ -27,7 +27,7 @@
 
       <dl class="city partial">
         <dt><label for="city">City</label></dt>
-        <dd><input type="text" id="city" name="city" value=""/></dd>
+        <dd><input type="text" id="city" name="city" value="" pattern="[A-Za-z]+"/></dd>
       </dl>
 
       <dl class="state partial">
@@ -109,7 +109,7 @@
       <dl class="email partial">
         <dt><label for="email">Email Address</label></dt>
         <dd>
-          <input type="email" name="email" id="email" required
+          <input type="email" name="email" id="email" 
           autocomplete="off" autocorrect="off" autocapitalize="none" />
         </dd>
       </dl>
