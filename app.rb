@@ -39,7 +39,6 @@ helpers do
   end
   
   def load_contacts(id)
-   
     contact = session[:contacts].find { |contact| contact["id"] == id }
   
     session[:error] = "The specified contact was not found."

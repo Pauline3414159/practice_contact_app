@@ -8,7 +8,6 @@ gem "erubis"
 gem "rake"
 gem "pry"
 gem "pry-byebug"
-gem "rake"
 
 
 

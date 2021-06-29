@@ -57,4 +57,3 @@ contacts = [
   end
 p contacts
  contacts = order_by(contacts, "first", "desc")
- p contacts
