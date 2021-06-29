@@ -24,7 +24,6 @@ class ContactTest < Minitest::Test
     assert_equal("text/html;charset=utf-8", last_response["Content-Type"])
   end
   
-  
   # validate the response contains the names of the contacts
   def test_creating_contact
     post "/create_contact", params = {first: "Andrew", last: "Roberts", id: "1"}
@@ -37,6 +36,7 @@ class ContactTest < Minitest::Test
     assert_includes(last_response.body, "Roberts")
   end
   
+  ## EXAMPLE
   # "rack.session"=>
   # {"session_id"=>"fe5b02ad9ac2f22627784d3be17352395db8dd046742e6ea54a6a884bf9cf609", "csrf"=>"635a730d874114bfe8099c0164b0a459", "tracking"=>{"HTTP_USER_AGENT"=>"da39a3ee5e6b4b0d3255bfef95601890afd80709", "HTTP_ACCEPT_LANGUAGE"=>"da39a3ee5e6b4b0d3255bfef95601890afd80709"}, "contacts"=>[{"first"=>"Andrew", "last"=>"Roberts", "id"=>4, "address"=>{}}]}
 
@@ -91,5 +91,4 @@ class ContactTest < Minitest::Test
     result.delete("id") #it's a new id each time because of how the tests are run
     assert_equal({"first"=>"Apples", "last"=>"Last", "phone"=>"55555555"}, result)
   end
-
 end

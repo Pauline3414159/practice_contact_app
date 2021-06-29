@@ -123,26 +123,23 @@ end
 # remove contact from list
 post "/contact/:id/delete" do 
   id = params[:id].to_i
-  #binding.pry
   session[:contacts].reject! { |contact| contact["id"] == id }
-  #binding.pry
-  
   redirect "/home"
 end
 
-def order_by(key, direction)
+def order_by(column_name, direction)
   if direction == "asc"
-    session[:contacts].sort_by { |hsh| hsh[key] }
+    session[:contacts].sort_by { |contact| contact[column_name] }
   elsif direction == "desc" 
-    session[:contacts].sort_by { |hsh| hsh[key] }.reverse
+    session[:contacts].sort_by { |contact| contact[column_name] }.reverse
   end
 end
 
 #sort by a column
 get "/home/:sort/:direction" do 
-  key = params[:sort]
+  column_name = params[:sort]
   direction= params[:direction]
-  session[:contacts] = order_by(key, direction)
+  session[:contacts] = order_by(column_name, direction)
   redirect "/home"
 end
 
