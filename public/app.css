@@ -65,6 +65,13 @@ text-decoration: none;
   margin: 0;
   padding: 0;
 }
+#edit {
+  margin: 0 auto;
+  max-width: 750px;
+}
+#edit h2 {
+  font-size: 24px;
+}
 
 /* Grey box and default font for fieldsets */
 .styled-form fieldset {
