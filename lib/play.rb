@@ -42,18 +42,20 @@ def complete_address(address)
 end
 complete_address(address)
 
+sort_direction =  {first: "asc", last: "asc"}
 
 contacts = [
   {"first"=>"Aaa","last"=>"Bbb"},
   {"first"=>"Bbb","last"=>"Aaa"}
   ]
 
-  def order_by(contacts, key, direction)
-    if direction == "asc"
-      contacts.sort_by! { |hsh| hsh[key] } 
-    elsif direction == "desc" 
-      contacts.sort_by! { |hsh| hsh[key] }.reverse
+  def order_by(contacts, column_name, sort_direction)
+    if sort_direction[column_name.to_sym] == "asc"
+      contacts.sort_by! { |contact| contact[column_name] } 
+    elsif sort_direction[column_name.to_sym] == "desc" 
+      contacts.sort_by! { |contact| contact[column_name] }.reverse
     end
   end
 p contacts
- contacts = order_by(contacts, "first", "desc")
+ contacts = order_by(contacts, "last", sort_direction)
+p contacts

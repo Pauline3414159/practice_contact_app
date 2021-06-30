@@ -13,7 +13,7 @@ tr:nth-of-type(odd) {
 
 
 th {
-  background: #333;
+  background: rgb(108, 108, 165);
   color: white;
   font-weight: bold;
 }
@@ -34,6 +34,22 @@ h1 {
   padding: 50px;
   text-align: center;
 }
+
+th .column {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .asc{
+background-image: url(images/up_arrow.png);
+background-size: 15px 15px;
+}
+
+th .desc{
+  background-image: url(images/down_arrow.png);
+  background-size: 15px 15px;
+  }
 
 a.column {
 color: white;

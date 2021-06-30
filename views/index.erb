@@ -7,8 +7,16 @@
   <thead>
     <tr>
       <th></th>
-      <th><a href="/home/<%= sortable("last") %>" class="column">Last Name</a></th>
-      <th><a href="/home/<%= sortable("first") %>" class="column">First Name</a></th>
+      <% if @last_direction == "asc" %>
+        <th><a href="/home/last?sort=desc" class="column <%= @last_direction %>">Last Name</a></th>
+      <% else %>
+        <th><a href="/home/last?sort=asc" class="column <%= @last_direction %>">Last Name</a></th>
+      <% end %>
+      <% if @first_direction == "asc" %>
+        <th><a href="/home/first?sort=desc" class="column <%= @first_direction %>">First Name</a></th>
+      <% else %>
+        <th><a href="/home/first?sort=asc" class="column <%= @first_direction %>">First Name</a></th>
+      <% end %>
       <th>Address</th>
       <th>Phone Number</th>
       <th>Email Address</th>

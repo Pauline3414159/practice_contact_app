@@ -16,7 +16,6 @@ end
 
 helpers do 
   def complete_address(address)
-   
     string = ""
     address.each_pair do |key, value|
       value += "," if key == "city" && value.length > 1
@@ -52,6 +51,14 @@ helpers do
     end
   end
 
+  def order_by(key, direction)
+    if direction == "asc"
+      session[:contacts].sort_by { |hsh| hsh[key] }
+    elsif direction == "desc" 
+      session[:contacts].sort_by { |hsh| hsh[key] }.reverse
+    end
+  end
+
   def update_contact(contact, params)
     contact["first"] = params[:first].capitalize
     contact["last"] = params[:last].capitalize
@@ -64,21 +71,6 @@ helpers do
     contact["phone"] = params[:phone]
     contact
   end
-
-  def sort_direction(column_name)
-    return "asc" if @contacts.empty?
-   order = if @contacts.first[column_name] < @contacts.last[column_name]
-    "desc"
-   elsif @contacts.first[column_name] > @contacts.last[column_name]
-    "asc"
-   end
-   order
-  end
-  
-  def sortable(column_name)
-    direction =  sort_direction(column_name) == "asc" ? "asc" : "desc" 
-    "#{column_name}/#{direction}"
-  end
 end 
 
 get "/" do 
@@ -88,7 +80,8 @@ end
 # View list of contacts
 get "/home" do
   #binding.pry
-  @contacts = session[:contacts]
+  @contacts = session[:contacts] = order_by("last", "asc")
+  @sort_direction = "asc"
   erb(:index)
 end
 
@@ -101,7 +94,7 @@ end
 post "/create_contact" do 
   address = add_address(params[:street_1], params[:street_2], params[:city], params[:state], params[:zipcode]).to_h
   session[:contacts] << Contact.new(first: params[:first], last: params[:last], phone: params[:phone], email: params[:email], address: address).to_h
-  @contacts = session[:contacts] 
+  @contacts = session[:contacts] = order_by("last", "asc")
   redirect "/home"
 end
 
@@ -123,24 +116,25 @@ end
 # remove contact from list
 post "/contact/:id/delete" do 
   id = params[:id].to_i
+  #binding.pry
   session[:contacts].reject! { |contact| contact["id"] == id }
+  #binding.pry
+  
   redirect "/home"
 end
 
-def order_by(column_name, direction)
-  if direction == "asc"
-    session[:contacts].sort_by { |contact| contact[column_name] }
-  elsif direction == "desc" 
-    session[:contacts].sort_by { |contact| contact[column_name] }.reverse
-  end
-end
 
 #sort by a column
-get "/home/:sort/:direction" do 
-  column_name = params[:sort]
-  direction= params[:direction]
-  session[:contacts] = order_by(column_name, direction)
-  redirect "/home"
+get "/home/:column" do 
+  redirect "/home" unless session[:contacts].size > 0
+  column_name = params[:column]
+  sort_direction = if column_name == "last"
+      @last_direction = params["sort"]
+    else
+      @first_direction = params["sort"]
+    end
+  @contacts = session[:contacts] = order_by(column_name, sort_direction)
+  erb(:index)
 end
 
 
