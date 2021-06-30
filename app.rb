@@ -1,6 +1,7 @@
 require "pry"
 require "pry-byebug"
 require "sinatra"
+require "sinatra/content_for"
 require "sinatra/reloader"
 require_relative "lib/contact.rb"
 require_relative "lib/address.rb"
@@ -81,7 +82,7 @@ end
 get "/home" do
   #binding.pry
   @contacts = session[:contacts] = order_by("last", "asc")
-  @sort_direction = "asc"
+  @last_direction = "asc"
   erb(:index)
 end
 
@@ -127,12 +128,15 @@ end
 #sort by a column
 get "/home/:column" do 
   redirect "/home" unless session[:contacts].size > 0
+  
+  # sort only the column in the route
   column_name = params[:column]
   sort_direction = if column_name == "last"
       @last_direction = params["sort"]
     else
       @first_direction = params["sort"]
     end
+
   @contacts = session[:contacts] = order_by(column_name, sort_direction)
   erb(:index)
 end

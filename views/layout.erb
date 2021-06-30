@@ -9,11 +9,14 @@
 
 
   <body>
-  <header>
-    <h1>Placement</h1>
-  </header>
-  <main>
-  <%= yield %>
-  </main>
+    <header>
+      <h1>Placement</h1>
+      <div class="actions">
+        <%= yield_content :header_links %>
+      </div>
+    </header>
+    <main>
+    <%= yield %>
+    </main>
   </body>
 </html>
