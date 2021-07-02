@@ -28,12 +28,14 @@
           <button type="submit">Delete</button>
         </form>
       </td>
+
       <td><%= contact["last"] %></td>
       <td><%= contact["first"] %></td>
       <td><%= complete_address(contact["address"]) %></td> 
       <td><%= contact["phone"] %></td>
       <td><%= contact["email"] %></td>
       <td><%= contact["birthday"] %></td>
+
     </tr>
     <% end %>
   </tbody>
