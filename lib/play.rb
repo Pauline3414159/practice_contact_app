@@ -6,6 +6,12 @@ class Address
   def all
    "#{street_1} #{city}"
   end
+
+  def to_h
+    instance_variables.each_with_object({}) do |var, hsh|
+      hsh[var.to_s.gsub('@', '')] = instance_variable_get(var) if instance_variable_get(var)
+    end
+  end
 end
 
 def add_address(street_1, street_2, city, state, zip_code)
@@ -18,20 +24,38 @@ def add_address(street_1, street_2, city, state, zip_code)
   address
 end
 
+
 address = add_address("123 Main St", "", "Somewhere", "AL", "123456")
+ address = address.to_h
 contact = Contact.new(first: "jane", last: "doe", address: address)
-
-def to_h
-  instance_variables.each_with_object({}) do |var, hsh|
-    hsh[var.to_s.gsub('@', '')] = instance_variable_get(var) if instance_variable_get(var)
+def complete_address(address)
+  string = ""
+  address.each_pair do |key, value|
+   
+    value += "," if key == "city"
+  
+    unless value.length < 1
+      string << value  + " "
+    end
   end
+ string
 end
-def test_getting_a_hash
-  aaa = Contact.new(first:'Apples45', last: '33laSt', **{phone: '55555555'})
-  result = aaa.to_h
-  result.delete("id")
-  assert_equal({"first"=>"Apples", "last"=>"Last", "phone"=>"55555555"}, result)
-end
-#contacts = YAML.load_file("contacts.yaml")
+complete_address(address)
 
-p contact.instance_variables
+sort_direction =  {first: "asc", last: "asc"}
+
+contacts = [
+  {"first"=>"Aaa","last"=>"Bbb"},
+  {"first"=>"Bbb","last"=>"Aaa"}
+  ]
+
+  def order_by(contacts, column_name, sort_direction)
+    if sort_direction[column_name.to_sym] == "asc"
+      contacts.sort_by! { |contact| contact[column_name] } 
+    elsif sort_direction[column_name.to_sym] == "desc" 
+      contacts.sort_by! { |contact| contact[column_name] }.reverse
+    end
+  end
+p contacts
+ contacts = order_by(contacts, "last", sort_direction)
+p contacts

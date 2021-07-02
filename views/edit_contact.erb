@@ -1,37 +1,36 @@
-<section id="todos">
+<section id="edit">
   <header>
-    <h2>Editing '<%= @contact.first + " " + @contact.last %>'</h2>
-   
+    <h2>Editing "<%= @contact["first"] + " " + @contact["last"] %>"</h2>
   </header>
 </section> 
-<form action="/contact/<%= @contact.id %>/edit" method="post" class="styled-form top-to-bottom">
+<form action="/contact/<%= @contact["id"] %>/edit" method="post" class="styled-form top-to-bottom">
     <fieldset>
       <dl>
         <dt><label for="first">First Name</label></dt>
-        <dd><input type="text" name="first" id="name" value="<%= @contact.first || params[:first] %>" /></dd>
+        <dd><input type="text" name="first" id="name" value="<%= @contact["first"] || params[:first] %>" /></dd>
       </dl>
       <dl>
         <dt><label for="last">Last Name</label></dt>
-        <dd><input type="text" name="last" id="name" value="<%= @contact.last || params[:last] %>" /></dd>
+        <dd><input type="text" name="last" id="name" value="<%= @contact["last"] || params[:last] %>" /></dd>
       </dl>
       
       <dl class="address">
         <dt><label for="street_1">Address</label></dt>
         <dd>
-          <input type="text" name="street_1" id="address" value="<%= @contact.address.street_1 || params[:street_1] %>"/>
-          <input type="text" name="street_2" id="address" value="<%= @contact.address.street_2 || params[:street_2] %>"/>
+          <input type="text" name="street_1" id="address" value="<%= @contact["address"]["street_1"] || params[:street_1] %>"/>
+          <input type="text" name="street_2" id="address" value="<%= @contact["address"]["street_2"] || params[:street_2] %>"/>
         </dd>
       </dl>
 
       <dl class="city partial">
         <dt><label for="city">City</label></dt>
-        <dd><input type="text" id="city" name="city" value="<%= @contact.address.city || params[:city] %>"/></dd>
+        <dd><input type="text" id="city" name="city" value="<%= @contact["address"]["city"] || params[:city] %>"/></dd>
       </dl>
 
       <dl class="state partial">
         <dt><label for="state">State</label></dt>
         <dd>
-          <select name="state" id="state" value="<%= @contact.address.state || params[:state] %>">
+          <select name="state" id="state" value="<%= @contact["address"]["state"] || params[:state] %>">
             <option disabled selected value="">Select a State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -91,22 +90,28 @@
       <dl class="zipcode partial">
         <dt><label for="zipcode">Zipcode</label></dt>
         <dd>
-          <input type="text" name="zipcode" id="zipcode" pattern="[0-9]{5}" value="<%= @contact.address.zipcode || params[:zipcode] %>" />
+          <input type="text" name="zipcode" id="zipcode" pattern="[0-9]{5}" value="<%= @contact["address"]["zipcode"] || params[:zipcode] %>" />
         </dd>
       </dl>
 
       <dl class="phone partial">
         <dt><label for="phone">Phone Number</label></dt>
-        <dd><input type="tel" id="phone" name="phone" value="<%= @contact.phone || params[:phone]  %>"/></dd>
+        <dd><input type="tel" id="phone" name="phone" value="<%= @contact["phone"] || params[:phone]  %>"/></dd>
       </dl>
 
       <dl class="email partial">
         <dt><label for="email">Email Address</label></dt>
         <dd>
           <input type="email" name="email" id="email"
-          autocomplete="off" autocorrect="off" autocapitalize="none" value="<%= @contact.email || params[:email] %>"/>
+          autocomplete="off" autocorrect="off" autocapitalize="none" value="<%= @contact["email"] || params[:email] %>"/>
         </dd>
       </dl>
+
+      <dl class="birthday partial">
+        <dt><label for="birthday">Birthday</label></dt>
+        <dd><input type="text" id="birthday" name="birthday" value="<%= @contact["birthday"] || params[:birthday]  %>"/></dd>
+      </dl>
+
 
       <button type="submit" class="btn">Submit Form</button>   
     </fieldset>

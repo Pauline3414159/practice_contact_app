@@ -1,34 +1,44 @@
-
 <table id="keywords">
   <thead>
     <tr>
       <th></th>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <% if @last_direction == "asc" %>
+        <th><a href="/home/last?sort=desc" class="column <%= @last_direction %>">Last Name</a></th>
+      <% else %>
+        <th><a href="/home/last?sort=asc" class="column <%= @last_direction %>">Last Name</a></th>
+      <% end %>
+      <% if @first_direction == "asc" %>
+        <th><a href="/home/first?sort=desc" class="column <%= @first_direction %>">First Name</a></th>
+      <% else %>
+        <th><a href="/home/first?sort=asc" class="column <%= @first_direction %>">First Name</a></th>
+      <% end %>
       <th>Address</th>
       <th>Phone Number</th>
       <th>Email Address</th>
+      <th>Birthday</th>
     </tr>
   <thead>
   <tbody>
     <% @contacts.each do |contact| %>
     <tr>
       <td>
-        <a href="/contact/<%= contact.id %>/edit">edit</a>
+        <a href="/contact/<%= contact["id"] %>/edit">edit</a>
         <%= " | " %>
-        <form class="inline" action="contact/<%= contact.id %>/delete" method="post">
+        <form class="inline" action="contact/<%= contact["id"] %>/delete" method="post">
           <button type="submit">Delete</button>
         </form>
       </td>
-      <td><%= contact.last %></td>
-      <td><%= contact.first %></td>
-      <td><%= contact.address.all %></td>
-      <td><%= contact.phone %></td>
-      <td><%= contact.email %></td>
+      <td><%= contact["last"] %></td>
+      <td><%= contact["first"] %></td>
+      <td><%= complete_address(contact["address"]) %></td> 
+      <td><%= contact["phone"] %></td>
+      <td><%= contact["email"] %></td>
+      <td><%= contact["birthday"] %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-  <p>
-    <a href="/home/create_contact">Create New Contact</a>
-</p>
+
+<% content_for :header_links do %>
+  <a class="add" href="home/create_contact">Create New Contact</a>
+<% end %>
