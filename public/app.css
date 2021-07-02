@@ -1,5 +1,9 @@
 @import url("whitespace-reset.css");
-
+body > header {
+  max-width: 1000px;
+   padding: 5px 0 5px 0; 
+  margin: 0 auto; 
+}
 table {
   margin: 0 auto;
   width: 1000px;
@@ -11,8 +15,9 @@ tr:nth-of-type(odd) {
   background: #eee;
 }
 
+
 th {
-  background: #333;
+  background: rgb(108, 108, 165);
   color: white;
   font-weight: bold;
 }
@@ -22,6 +27,7 @@ th {
   border: 1px solid #ccc;
   text-align: left;
 }
+
 
 tr:hover {
   background-color: lightgray;
@@ -33,10 +39,38 @@ h1 {
   text-align: center;
 }
 
+th .column {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .asc{
+background-image: url(images/up_arrow.png);
+background-size: 15px 15px;
+}
+
+th .desc{
+  background-image: url(images/down_arrow.png);
+  background-size: 15px 15px;
+  }
+
+a.column {
+color: white;
+text-decoration: none;
+}
+
 /* Eliminate margins and padding on everything */
 .styled-form * {
   margin: 0;
   padding: 0;
+}
+#edit {
+  margin: 0 auto;
+  max-width: 750px;
+}
+#edit h2 {
+  font-size: 24px;
 }
 
 /* Grey box and default font for fieldsets */
@@ -48,7 +82,7 @@ h1 {
   box-sizing: border-box;
   color: #4d4d4d;
   font-family: myriad-pro, "Helvetica Neue", Helvetica, Roboto, Arial,
-    sans-serif;
+  sans-serif;
   padding: 1rem;
 }
 
@@ -94,7 +128,8 @@ h1 {
   width: 100%;
 }
 
-.top-to-bottom dl.city {
+.top-to-bottom dl.city, 
+.top-to-bottom dl.birthday {
   width: 50%;
 }
 

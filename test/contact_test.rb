@@ -1,7 +1,55 @@
-require 'minitest/autorun'
-require_relative '../lib/contact'
+ENV['RACK_ENV'] = "test" #prevents sinatra from starting a web server when testing
 
-class TestContact < Minitest::Test
+require 'minitest/autorun'
+require "rack/test"
+require_relative '../lib/contact'
+require_relative '../lib/address'
+require_relative '../app.rb'
+
+class ContactTest < Minitest::Test
+  include Rack::Test::Methods # This module gives us methods to work with
+  
+  def app # These methods expect a method called app to exist and will return an instance of a Rack application when called.
+    Sinatra::Application
+  end
+
+  def create_contacts(first, last)
+    contact
+   p  Contact.new(first: first, last: last).to_h
+  end
+  
+  def test_index
+    get "/home"
+    assert_equal(200, last_response.status)
+    assert_equal("text/html;charset=utf-8", last_response["Content-Type"])
+  end
+  
+  # validate the response contains the names of the contacts
+  def test_creating_contact
+    post "/create_contact", params = {first: "Andrew", last: "Roberts", id: "1"}
+    
+    assert_equal 302, last_response.status
+    
+    get last_response["Location"]
+    last_request.env["rack.session"]
+    assert_includes(last_response.body, "Andrew")
+    assert_includes(last_response.body, "Roberts")
+  end
+  
+  ## EXAMPLE
+  # "rack.session"=>
+  # {"session_id"=>"fe5b02ad9ac2f22627784d3be17352395db8dd046742e6ea54a6a884bf9cf609", "csrf"=>"635a730d874114bfe8099c0164b0a459", "tracking"=>{"HTTP_USER_AGENT"=>"da39a3ee5e6b4b0d3255bfef95601890afd80709", "HTTP_ACCEPT_LANGUAGE"=>"da39a3ee5e6b4b0d3255bfef95601890afd80709"}, "contacts"=>[{"first"=>"Andrew", "last"=>"Roberts", "id"=>4, "address"=>{}}]}
+
+# validate the response contains the contact from the session object
+  def test_editing_contact
+    get "/home", {},  {"rack.session" => { "contacts" => ["first" => "Jane", "last" => "Eyre", "id" => "5", "address" => {}] }  }
+    
+    assert_equal(200, last_response.status)
+    assert_equal("text/html;charset=utf-8", last_response["Content-Type"])
+    assert_includes(last_response.body, "<td>Jane</td>")
+    assert_includes(last_response.body, "<td>Eyre</td>")
+  end
+
   def test_adding_only_one_name_causes_error
     assert_raises(ArgumentError) do
       Contact.new(first:'jane', phone:'8575309')
