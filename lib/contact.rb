@@ -32,7 +32,6 @@ class Contact
 
   def phone=(new_phone)
     @phone = new_phone.gsub(/[^0-9]/, '')
-    @phone.insert(3, '-').insert(-5, '-')
     @phone
   end
 
@@ -46,7 +45,7 @@ class Contact
 
   def optionals(**info)
     @email = info[:email]
-    @phone = info[:phone].insert(3, '-').insert(-5, '-')
+    @phone = info[:phone]
     @birthday = info[:birthday]
     @address = info[:address]
     @category = info[:category] if CATEGORIIES.include?(info[:category.downcase])

@@ -65,7 +65,7 @@ helpers do
     contact["last"] = params[:last].capitalize
     contact["address"]["street_1"] = params[:street_1]
     contact["address"]["stree_2"] = params[:street_2]
-    contact["address"]["city"] = params[:city]
+    contact["address"]["city"] = params[:city].capitalize
     contact["address"]["state"] = params[:state] if params[:state]
     contact["address"]["zipcode"] = params[:zipcode]
     contact["email"] = params[:email]
@@ -93,8 +93,8 @@ end
 
 # Create new contact
 post "/create_contact" do 
-  address = add_address(params[:street_1], params[:street_2], params[:city], params[:state], params[:zipcode]).to_h
-  session[:contacts] << Contact.new(first: params[:first], last: params[:last], phone: params[:phone], email: params[:email], address: address).to_h
+  address = add_address(params[:street_1], params[:street_2], params[:city].capitalize, params[:state], params[:zipcode]).to_h
+  session[:contacts] << Contact.new(first: params[:first], last: params[:last], phone: params[:phone], email: params[:email], address: address, birthday: params[:birthday]).to_h
   @contacts = session[:contacts] = order_by("last", "asc")
   redirect "/home"
 end
